@@ -24,7 +24,7 @@ apt-get update
 
 yes | apt-get install postgresql-10 | tee -a "$LOGFILE"
 
-cd /home/developer/ && git clone "https://github.com/fellor/friendly-potato.git" | tee -a "$LOGFILE"
+cd /home/developer/ && git clone "https://github.com/TheWeatherTracking/server-adm.git" | tee -a "$LOGFILE"
 
 echo "Well done!" >> "$LOGFILE"
 
