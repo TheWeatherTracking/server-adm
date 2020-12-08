@@ -1,0 +1,8 @@
+DROP DATABASE dev_db;
+DROP ROLE dev;
+
+CREATE ROLE dev WITH
+  LOGIN
+  PASSWORD 'pass1234';
+  
+CREATE DATABASE dev_db OWNER dev;
