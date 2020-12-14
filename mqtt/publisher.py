@@ -47,5 +47,5 @@ class Publisher:
 
 
 if __name__ == "__main__":
-    p: Publisher = Publisher(sys.argv[1], int(sys.argv[2]), int(sys.argv[3]))
+    p = Publisher(sys.argv[1], int(sys.argv[2]), int(sys.argv[3]))
     p.run()
