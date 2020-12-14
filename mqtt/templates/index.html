@@ -1,0 +1,42 @@
+<html>
+
+<head>
+<style>
+table {
+    width: 100%;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+<h2>List of emulated devices</h2>
+<table>
+    <tbody>
+    <tr>
+        <td>device signature</td>
+        <td>lifetime</td>
+        <td>period</td>
+        <td></td>
+    </tr>
+    {% for key, value in p.items() %}
+    <tr>
+        <td>{{key}}</td>
+        <td>{{value.lifetime}}</td>
+        <td>{{value.period}}</td>
+        <td></td>
+    </tr>
+    {% endfor %}
+    <form action="/mqtt_emulating_helper/create-publisher" method="post">
+        <tr>
+            <td><input type="text" name="device_signature" value="dev_{{i}}"></td>
+            <td><input type="text" name="lifetime" value="30"></td>
+            <td><input type="text" name="period" value="5"></td>
+            <td><input type="submit" value="create"></td>
+        </tr>
+    </form>
+    </tbody>
+</table>
+</body>
+
+</html>

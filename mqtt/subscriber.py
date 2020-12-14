@@ -9,7 +9,7 @@ class Subscriber:
 
     def __init__(self, device_name: str):
         self._device_name = device_name
-        self._topic = "/devices/" + self._device_name + "/temperature"
+        self._topic = "/devices/" + self._device_name
 
     def run(self):
         client = mqtt.Client("subscriber")

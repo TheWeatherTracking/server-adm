@@ -1,8 +1,8 @@
 INSERT INTO users (login, password) VALUES ('admin', '8C6976E5B5410415BDE908BD4DEE15DFB167A9C873FC4BB8A81F6F2AB448A918');
 
-INSERT INTO devices (signature, ip) VALUES ('dev_01', 'localhost');
-INSERT INTO devices (signature, ip) VALUES ('dev_02', 'localhost');
-INSERT INTO devices (signature, ip) VALUES ('dev_03', 'localhost');
+INSERT INTO devices (signature, ip) VALUES ('dev_1', 'localhost');
+INSERT INTO devices (signature, ip) VALUES ('dev_2', 'localhost');
+INSERT INTO devices (signature, ip) VALUES ('dev_3', 'localhost');
 
 INSERT INTO telemetry (device_id, temperature, pressure, moisture, luminosity, tmstamp) VALUES (1, -93, 740, 59, 31, '2020-12-13 16:26:25');
 INSERT INTO telemetry (device_id, temperature, pressure, moisture, luminosity, tmstamp) VALUES (1, -81, 742, 44, 31, '2020-12-13 16:25:25');
