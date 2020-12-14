@@ -34,7 +34,7 @@ class Publisher:
         client.connect("localhost")
         client.loop_start()
 
-        iter: int = self._lifetime
+        iter = self._lifetime
         while iter > 0:
             iter -= self._period
             message = "t=%d.%d;p=%d;m=%d;l=%d" % (
