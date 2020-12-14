@@ -45,7 +45,7 @@ class Publisher:
             client.publish(self._topic, message)
             
             with open(self._logfile, "a") as f:
-                f.write(self._topic + ": " + message)
+                f.write(self._topic + ": " + message + "\n")
 
             time.sleep(self._period)
         client.loop_stop()
