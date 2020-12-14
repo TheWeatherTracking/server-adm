@@ -14,7 +14,8 @@ def index():
     rem = []
     for pk in publishers.keys():
         p = publishers[pk]
-        if p["timestamp"] + p["lifetime"] < ct:
+        p["lifetime"] = p["timestamp"] + p["initial_lifetime"] - ct
+        if p["lifetime"] < 0:
             rem.append(pk)
 
     for pk in rem:
@@ -41,7 +42,7 @@ def create_publisher():
         ct = time.time()
 
         if dev_name not in publishers:
-            publishers[dev_name] = {"timestamp": ct, "lifetime": int(lifetime), "period": int(period)}
+            publishers[dev_name] = {"timestamp": ct, "initial_lifetime": int(lifetime), "lifetime": int(lifetime), "period": int(period)}
             os.system("python3 /home/developer/server-adm/mqtt/publisher.py %s %s %s /home/developer/publisher.log &" % (dev_name, lifetime, period))
 
         return redirect("/mqtt_emulating_helper")
