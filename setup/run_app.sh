@@ -18,5 +18,8 @@ nohup python3 "$HOME/server-adm/mqtt/web_helper.py" > "$WEB_HELPER_LOG" 2>&1 &
 
 nohup java -jar "$HOME/app.jar" > "$APP_LOG" 2>&1 &
 
+chown -R developer /home/developer 
+chgrp -R developer /home/developer 
+
 exit 0
 
