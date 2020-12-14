@@ -42,7 +42,7 @@ def create_publisher():
 
         if dev_name not in publishers:
             publishers[dev_name] = {"timestamp": ct, "lifetime": int(lifetime), "period": int(period)}
-            os.system("python3 /home/developer/server-adm/mqtt/publisher.py %s %s %s >> /home/developer/publisher.log 2>&1 &" % (dev_name, lifetime, period))
+            os.system("python3 /home/developer/server-adm/mqtt/publisher.py %s %s %s /home/developer/publisher.log &" % (dev_name, lifetime, period))
 
         return redirect("/mqtt_emulating_helper")
     except Exception as e:

@@ -10,12 +10,14 @@ class Publisher:
     _topic = ""
     _lifetime = 30
     _period = 5
+    _logfile = "publisher.log"
 
-    def __init__(self, device_name, lifetime, period):
+    def __init__(self, device_name, lifetime, period, logfile):
         self._device_name = device_name
         self._topic = "/devices/" + self._device_name
         self._lifetime = lifetime
         self._period = period
+        self._logfile = logfile
 
     def _connect(self, client, userdata, flags, rc):
         print("connected " + mqtt.connack_string(rc))
@@ -41,11 +43,14 @@ class Publisher:
                 randint(0, 100), randint(0, 9), randint(740, 780), randint(30, 70), randint(30, 60))
 
             client.publish(self._topic, message)
+            
+            with open(self._logfile, "a") as f:
+                f.write(self._topic + ": " + message)
 
             time.sleep(self._period)
         client.loop_stop()
 
 
 if __name__ == "__main__":
-    p = Publisher(sys.argv[1], int(sys.argv[2]), int(sys.argv[3]))
+    p = Publisher(sys.argv[1], int(sys.argv[2]), int(sys.argv[3]), sys.argv[4])
     p.run()
