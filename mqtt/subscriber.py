@@ -4,10 +4,10 @@ import paho.mqtt.client as mqtt
 
 
 class Subscriber:
-    _device_name: str = "unsupported device"
-    _topic: str = ""
+    _device_name = "unsupported device"
+    _topic = ""
 
-    def __init__(self, device_name: str):
+    def __init__(self, device_name):
         self._device_name = device_name
         self._topic = "/devices/" + self._device_name
 

@@ -5,13 +5,13 @@ from flask import Flask, request, render_template, redirect
 
 app = Flask(__name__)
 
-publishers: dict = {}
+publishers = {}
 
 @app.route("/mqtt_emulating_helper")
 def index():
     ct = time.time()
 
-    rem: list = []
+    rem = []
     for pk in publishers.keys():
         p = publishers[pk]
         if p["timestamp"] + p["lifetime"] < ct:
@@ -34,7 +34,7 @@ def create_publisher():
         if period is None or period == "" or int(period) <= 0:
             period = 5
 
-        dev_name: str = request.form['device_signature']
+        dev_name = request.form['device_signature']
         if dev_name is None or dev_name == "":
             dev_name = "default_dev"
 

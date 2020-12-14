@@ -6,12 +6,12 @@ import paho.mqtt.client as mqtt
 
 
 class Publisher:
-    _device_name: str = "unsupported device"
-    _topic: str = ""
-    _lifetime: int = 30
-    _period: int = 5
+    _device_name = "unsupported device"
+    _topic = ""
+    _lifetime = 30
+    _period = 5
 
-    def __init__(self, device_name: str, lifetime: int, period: int):
+    def __init__(self, device_name, lifetime, period):
         self._device_name = device_name
         self._topic = "/devices/" + self._device_name
         self._lifetime = lifetime
