@@ -14,7 +14,7 @@ class Publisher:
 
     def __init__(self, device_name, lifetime, period, logfile):
         self._device_name = device_name
-        self._topic = "/devices/" + self._device_name
+        self._topic = "/devices/evt/" + self._device_name
         self._lifetime = lifetime
         self._period = period
         self._logfile = logfile
@@ -33,7 +33,7 @@ class Publisher:
         client.on_publish = self._publish
         client.on_connect = self._connect
 
-        client.connect("localhost")
+        client.connect("185.255.132.229")
         client.loop_start()
 
         iter = self._lifetime
