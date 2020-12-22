@@ -92,7 +92,7 @@ def run():
 @app.route("/stop") 
 def stop():
     global process
-    pids = os.popen("ps -eu | grep server-tester.jar | awk '{print $2}'").read().split("\n")
+    pids = os.popen("ps -aux | grep -e \"-jar /home/developer/server-tester.jar\" | awk '{print $2}'").read().split("\n")
     for pid in pids:
         os.system("kill %s" % pid)
     process = -1
