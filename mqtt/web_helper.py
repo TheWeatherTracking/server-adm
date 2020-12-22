@@ -88,6 +88,11 @@ def run():
         print(e)
         return redirect("/")
        
+
+@app.route("/info")
+def info():
+    return render_template('info.html')
+
        
 @app.route("/stop") 
 def stop():
