@@ -14,7 +14,7 @@ echo 'port 1883\nallow_anonymous true' > "/etc/mosquitto/no_auth.conf"
 
 nohup "/usr/sbin/mosquitto" -c "/etc/mosquitto/no_auth.conf" > "$MOSQUITTO_LOG" 2>&1 &
 
-nohup python3 "$HOME/server-adm/mqtt/web_helper.py" > "$WEB_HELPER_LOG" 2>&1 &
+nohup python3 "$HOME/server-adm/mqtt/web_helper.py" "$HOME/web-helper-mqtt.log" "$HOME/server-tester.jar" > "$WEB_HELPER_LOG" 2>&1 &
 
 nohup java -jar "$HOME/app.jar" > "$APP_LOG" 2>&1 &
 
