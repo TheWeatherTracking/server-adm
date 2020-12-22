@@ -1,42 +1,77 @@
 <html>
 
 <head>
-<style>
-table {
-    width: 100%;
-    text-align: center;
-}
-</style>
+
+<link rel="stylesheet" href="/static/skeleton.css">
+<link rel="stylesheet" href="/static/normalize.css">
+<link rel="stylesheet" href="/static/common.css">
+
+<title></title>
 </head>
 
 <body>
-<h2>List of emulated devices</h2>
-<table>
-    <tbody>
-    <tr>
-        <td>device signature</td>
-        <td>time left, s</td>
-        <td>period, s</td>
-        <td></td>
-    </tr>
-    {% for key, value in p.items() %}
-    <tr>
-        <td>{{key}}</td>
-        <td>{{value.lifetime}}</td>
-        <td>{{value.period}}</td>
-        <td></td>
-    </tr>
-    {% endfor %}
-    <form action="/mqtt_emulating_helper/create-publisher" method="post">
-        <tr>
-            <td><input type="text" name="device_signature" value="dev_{{i}}"></td>
-            <td><input type="text" name="lifetime" value="30"></td>
-            <td><input type="text" name="period" value="5"></td>
-            <td><input type="submit" value="create"></td>
-        </tr>
+
+{% if p != -1 %}
+  <h4>Пожалуйста, не перезагружайте страницу, пока устройства работают. Используйте кнопку "Обновить"</h4>
+{% endif %}
+
+<div id="emulation_control_panel">
+  <div id="emulation_control_panel__inputs">
+    <div>
+      <label for="dev_amount_i">Количество устройств</label>
+      <input onChange="document.getElementById('dev_amount').value=this.value" id="dev_amount_i" type="text"  value="3">
+    </div>
+    
+    <div>
+      <label for="dev_iterations_i">Количество сообщений</label>
+      <input onChange="document.getElementById('dev_iterations').value=this.value" id="dev_iterations_i" type="text" value="3600">
+    </div>
+        
+    <div>
+      <label for="dev_min_period_i">Мин. период между сообщ., мс</label>
+      <input onChange="document.getElementById('dev_min_period').value=this.value" id="dev_min_period_i" type="text"  value="3000">
+    </div>
+    
+    <div>
+      <label for="dev_max_period_i">Макс. период между сообщ., мс</label>
+      <input onChange="document.getElementById('dev_max_period').value=this.value" id="dev_max_period_i" type="text"  value="15000">
+    </div>
+  </div>
+  
+  <div id="emulation_control_panel__submits">
+    <form action="/run" method="post">
+      <input type="hidden" name="dev_amount" id="dev_amount" value="3">
+      <input type="hidden" name="dev_iterations" id="dev_iterations" value="3600">
+      <input type="hidden" name="dev_min_period" id="dev_min_period" value="3000">
+      <input type="hidden" name="dev_max_period" id="dev_max_period" value="15000">
+      
+      {% if p != -1 %}
+        <input disabled="true" type="submit" value="Запустить устройства">
+      {% else %}
+        <input type="submit" value="Запустить устройства">
+      {% endif %}
+      
     </form>
-    </tbody>
-</table>
+
+    <form action="/stop">
+      <input type="submit" value="Остановить устройства">
+    </form>
+
+    <form action="/clean_log">
+      {% if p != -1 %}
+        <input disabled="true" type="submit" value="Очистить лог">
+      {% else %}
+        <input type="submit" value="Очистить лог">
+      {% endif %}
+    </form>
+  </div>
+</div>
+
+<iframe id="frame" src="/frame"></iframe>
+
 </body>
 
 </html>
+
+
+

@@ -1,0 +1,65 @@
+img {
+  cursor: pointer;
+}
+
+body > * {
+  display: block;
+}
+
+script {
+  display: none;
+}
+
+table {
+  max-width: 100%; 
+}
+
+table td {
+  word-break: break-all;
+  max-width: 50%;
+  min-width: 25%;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+}
+
+iframe, #emulation_control_panel {
+    width: 98%;
+    height: auto;
+    
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    
+    padding: 15px;
+    box-shadow: 0 0 3px grey;
+    border: none;
+} 
+
+iframe {
+    height: 100%;
+}
+
+
+#emulation_control_panel__inputs * {
+  display: inline-block;
+  margin: 5px;
+}
+
+#emulation_control_panel__submits * {
+  display: inline-block;
+  margin: 5px;
+}
+
+#emulation_control_panel__inputs label {
+  width: 150px;
+}
+
+input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.5;    
+}
+
+
