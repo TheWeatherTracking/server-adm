@@ -78,7 +78,7 @@ def run():
             amount = 3
             
         
-        cmd = "java -jar server-tester.jar amount=%s iterations=%s max_period=%s min_period=%s >> %s" % (amount, iterations, max_period, min_period, log_file_name)
+        cmd = "java -jar %s amount=%s iterations=%s max_period=%s min_period=%s >> %s" % (jar_file_name, amount, iterations, max_period, min_period, log_file_name)
               
         os.system(cmd)
         process = 1
